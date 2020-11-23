@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.memento.data.UserConfig;
+
 public class MainActivity extends AppCompatActivity {
 
     private Button iniciarButton;
@@ -24,13 +26,13 @@ public class MainActivity extends AppCompatActivity {
         iniciarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LogIn();
+                SignUp();
             }
         });
     }
 
-    private void LogIn(){
-        userConfig.isFirstTime();
+    private void SignUp(){
+        userConfig.setIsFirstTime(false);
         Intent intent = new Intent(this, LogIn.class);
         startActivity(intent);
     }
@@ -39,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
         userConfig = new UserConfig(getApplicationContext());
         if (!userConfig.isFirstTime()){
-            LogIn();
+            SignUp();
             finish();
         }
     }

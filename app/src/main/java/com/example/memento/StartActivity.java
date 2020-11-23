@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.memento.data.UserConfig;
+
 public class StartActivity extends Activity {
 
     @Override
@@ -22,7 +24,7 @@ public class StartActivity extends Activity {
             if (userConfig.userExists()){
                 intent = new Intent(getBaseContext(), Notes.class);
             } else {
-                intent = new Intent(getBaseContext(), SignUp.class);
+                intent = new Intent(getBaseContext(), LogIn.class);
             }
         }
         startActivity(intent);
