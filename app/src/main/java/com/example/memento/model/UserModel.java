@@ -1,4 +1,4 @@
-package com.example.memento;
+package com.example.memento.model;
 
 public class UserModel {
     String fullname;

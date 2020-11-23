@@ -1,4 +1,4 @@
-package com.example.memento;
+package com.example.memento.data;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.memento.BuildConfig;
+import com.example.memento.model.UserModel;
 
 import java.util.Locale;
 
