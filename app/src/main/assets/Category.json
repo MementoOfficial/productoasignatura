@@ -1,0 +1,28 @@
+[
+    {
+      "title": "Movies",
+      "description": "¿Te gustan las películas?",
+      "image": "ic_baseline_local_movies_24"
+    },
+
+    {
+      "title": "Videogames",
+      "description": "¿Eres Gamer?",
+      "image": "ic_baseline_videogame_asset_24"
+    },
+
+    {
+      "title": "Series",
+      "description": "¿Te gustan las series?",
+      "image":"ic_baseline_series_tv_24"
+    },
+
+    {
+      "title": "Anime",
+      "description": "¿Eres alguien de cultura?",
+      "image": "ic_baseline_anchor_24"
+    }
+
+
+
+]
