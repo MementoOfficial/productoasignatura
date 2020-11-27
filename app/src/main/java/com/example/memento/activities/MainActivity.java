@@ -1,4 +1,4 @@
-package com.example.memento;
+package com.example.memento.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.memento.R;
+import com.example.memento.activities.LogIn;
 import com.example.memento.data.UserConfig;
 
 public class MainActivity extends AppCompatActivity {
