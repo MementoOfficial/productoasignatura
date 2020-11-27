@@ -1,9 +1,12 @@
-package com.example.memento;
+package com.example.memento.activities;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.memento.activities.LogIn;
+import com.example.memento.activities.MainActivity;
+import com.example.memento.activities.Notes;
 import com.example.memento.data.UserConfig;
 
 public class StartActivity extends Activity {

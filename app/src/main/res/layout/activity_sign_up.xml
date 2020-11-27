@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignUp">
+    tools:context=".activities.SignUp">
 
     <ImageView
         android:id="@+id/signUp_fondo"
@@ -24,7 +24,7 @@
         app:layout_constraintTop_toTopOf="@+id/signUp_fondo"/>
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/eTitulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="35dp"
@@ -37,7 +37,7 @@
         app:layout_constraintTop_toBottomOf="@+id/main_logo" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/eFirstName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="41dp"
@@ -46,10 +46,10 @@
         android:text="First Name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintTop_toBottomOf="@+id/eTitulo" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName3"
+        android:id="@+id/eLastName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="13dp"
@@ -58,10 +58,10 @@
         android:text="Last Name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+        app:layout_constraintTop_toBottomOf="@+id/eFirstName" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName4"
+        android:id="@+id/eEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
@@ -70,10 +70,10 @@
         android:text="Email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
+        app:layout_constraintTop_toBottomOf="@+id/eLastName" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName5"
+        android:id="@+id/eUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -82,10 +82,10 @@
         android:text="User"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName4" />
+        app:layout_constraintTop_toBottomOf="@+id/eEmail" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName6"
+        android:id="@+id/ePassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
@@ -94,7 +94,7 @@
         android:text="Password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName5" />
+        app:layout_constraintTop_toBottomOf="@+id/eUser" />
 
     <Button
         android:id="@+id/registrarse_signUp"
@@ -106,7 +106,7 @@
         android:backgroundTint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName6" />
+        app:layout_constraintTop_toBottomOf="@+id/ePassword" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

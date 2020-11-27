@@ -9,17 +9,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Memento">
-        <activity android:name=".StartActivity">
+
+
+        <activity android:name=".activities.CrearNotas"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"/>
+
+        <activity android:name=".activities.StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Notes" />
-        <activity android:name=".SignUp" />
-        <activity android:name=".LogIn" />
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".activities.Notes"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".activities.SignUp" />
+        <activity android:name=".activities.LogIn" />
+        <activity android:name=".activities.MainActivity" />
     </application>
 
 </manifest>

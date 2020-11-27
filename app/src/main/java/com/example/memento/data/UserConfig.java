@@ -49,11 +49,11 @@ public class UserConfig {
     @Nullable
     public UserModel getUser() {
         final String name = mPrefs.getString(PREF_USER_NAME, null);
-        final String email = mPrefs.getString(PREF_USER_PASSWORD, null);
-        if(TextUtils.isEmpty(name) || TextUtils.isEmpty(email)) {
+        final String password = mPrefs.getString(PREF_USER_PASSWORD, null);
+        if(TextUtils.isEmpty(name) || TextUtils.isEmpty(password)) {
             return null;
         }
-        return new UserModel(name, email);
+        return new UserModel(name, password);
     }
 
     public boolean setUser(@Nullable UserModel user) {

@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<map>
-    <boolean name = "is_first_time" value = "false"/>
-    <string name = "user_name"> Hasser Perez </string>
-    <string name = "user_password"> 1234 </string>
-</map>
