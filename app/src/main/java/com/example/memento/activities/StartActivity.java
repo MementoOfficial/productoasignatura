@@ -27,7 +27,7 @@ public class StartActivity extends Activity {
             if (userConfig.userExists()){
                 intent = new Intent(getBaseContext(), Notes.class);
             } else {
-                intent = new Intent(getBaseContext(), LogIn.class);
+                intent = new Intent(getBaseContext(), SignUp.class);
             }
         }
         startActivity(intent);

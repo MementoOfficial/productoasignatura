@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">Memento</string>
     <string name="search_notes">Buscar Notas</string>
+    <string name="user_error">Favor ingresa tu usuario</string>
+    <string name="email_error">Favor ingresa tu correo electronico</string>
+    <string name="password_error">Favor ingresa tu contraseña</string>
+    <string name="welcome_user_title">Bienvenido, %s</string>
+    <string name="usuario">Usuario</string>
+    <string name="cannot_get_password">No pudimos obtener la contraseña</string>
 </resources>
