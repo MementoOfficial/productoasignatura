@@ -95,6 +95,74 @@
                 app:layout_constraintStart_toEndOf="@id/viewSubtitleIndicator"
                 app:layout_constraintTop_toBottomOf="@id/textDateTime"/>
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/dateLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginEnd="@dimen/_15sdp"
+                app:layout_constraintEnd_toStartOf="@id/timeLayout"
+                app:layout_constraintTop_toBottomOf="@id/inputNoteSubtitle"
+                app:layout_constraintStart_toStartOf="@id/timeLayout"
+                app:layout_constraintStart_toEndOf="@id/inputNoteSubtitle"
+                android:orientation="horizontal"
+                tools:ignore="MissingConstraints,UseCompoundDrawables">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:background="@drawable/ic_calendar"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:id="@+id/date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Fecha"
+                    android:layout_marginStart="@dimen/_35sdp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                    android:textColor="@color/colorWhite"
+                    android:textColorHint="@color/textHint" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/timeLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginEnd="@dimen/_15sdp"
+                app:layout_constraintEnd_toStartOf="@id/inputNoteSubtitle"
+                app:layout_constraintTop_toBottomOf="@id/dateLayout"
+                app:layout_constraintStart_toStartOf="@id/inputNote"
+                app:layout_constraintStart_toEndOf="@id/inputNote"
+                android:orientation="horizontal"
+                tools:ignore="MissingConstraints,UseCompoundDrawables">
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:background="@drawable/ic_time"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:id="@+id/time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Hora"
+                    android:layout_marginStart="@dimen/_35sdp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                    android:textColor="@color/colorWhite"
+                    android:textColorHint="@color/textHint" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
             <View
                 android:id="@+id/viewSubtitleIndicator"
                 android:layout_width="@dimen/_5sdp"
@@ -136,7 +204,7 @@
                 android:textColorHint="@color/textHint"
                 android:textSize="@dimen/_13ssp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/imageNote"/>
+                app:layout_constraintTop_toBottomOf="@id/timeLayout"/>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

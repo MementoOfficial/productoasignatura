@@ -2,45 +2,60 @@ package com.example.memento.activities;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.ContentUris;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.memento.R;
 import com.example.memento.database.NotesDatabase;
 import com.example.memento.entidades.Note;
+import com.example.memento.activities.LogIn;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+
+import static java.util.Calendar.MINUTE;
 
 public class CrearNotas extends AppCompatActivity {
 
     private EditText inputNoteTitle, inputNoteSubtitle, inputNoteText;
-    private TextView textDateTime;
+    private TextView textDateTime, inputDate, inputTime;
     private View viewSubtitleIndicator;
     private ImageView imageNote;
 
@@ -49,6 +64,8 @@ public class CrearNotas extends AppCompatActivity {
 
     private static final int REQUEST_CODE_STORAGE_PERMISSION = 1;
     private static final int REQUEST_CODE_SELECT_IMAGE = 2;
+
+    private AlertDialog dialogDeleteNote;
 
     private Note alreadyAvailableNote;
 
@@ -69,6 +86,8 @@ public class CrearNotas extends AppCompatActivity {
         inputNoteTitle = findViewById(R.id.inputNoteTitle);
         inputNoteSubtitle = findViewById(R.id.inputNoteSubtitle);
         inputNoteText = findViewById(R.id.inputNote);
+        inputDate = findViewById(R.id.date);
+        inputTime = findViewById(R.id.time);
         textDateTime = findViewById(R.id.textDateTime);
         viewSubtitleIndicator = findViewById(R.id.viewSubtitleIndicator);
         imageNote = findViewById(R.id.imageNote);
@@ -94,6 +113,7 @@ public class CrearNotas extends AppCompatActivity {
             setViewOrUpdateNote();
         }
 
+        showAddDialog();
         initMiscellaneous();
         setSubtitleIndicatorColor();
     }
@@ -150,6 +170,7 @@ public class CrearNotas extends AppCompatActivity {
             }
         }
 
+        showAddDialog();
         new SaveNoteTask().execute();
     }
 
@@ -272,6 +293,65 @@ public class CrearNotas extends AppCompatActivity {
                 }
             }
         });
+
+        if(alreadyAvailableNote != null){
+            layoutMiscellaneous.findViewById(R.id.layoutDeleteNote).setVisibility(View.VISIBLE);
+            layoutMiscellaneous.findViewById(R.id.layoutDeleteNote).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+                    showDeleteNoteDialog();
+                }
+            });
+        }
+    }
+
+    private void showDeleteNoteDialog(){
+        if(dialogDeleteNote == null){
+            AlertDialog.Builder builder = new AlertDialog.Builder(CrearNotas.this);
+            View view = LayoutInflater.from(this).inflate(
+                    R.layout.layout_delete_note,
+                    (ViewGroup) findViewById(R.id.layoutDeleteNoteContainer)
+            );
+            builder.setView(view);
+            dialogDeleteNote = builder.create();
+            if(dialogDeleteNote.getWindow() != null){
+                dialogDeleteNote.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+            }
+            view.findViewById(R.id.textDeleteNote).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    @SuppressLint("StaticFieldLeak")
+                    class DeleteNoteTask extends AsyncTask<Void, Void, Void>{
+
+                        @Override
+                        protected Void doInBackground(Void... voids) {
+                            NotesDatabase.getDatabase(getApplicationContext()).noteDao()
+                                    .deleteNote(alreadyAvailableNote);
+                            return null;
+                        }
+
+                        @Override
+                        protected void onPostExecute(Void aVoid) {
+                            super.onPostExecute(aVoid);
+                            Intent intent = new Intent();
+                            intent.putExtra("isNoteDeleted", true);
+                            setResult(RESULT_OK, intent);
+                            finish();
+                        }
+                    }
+                    new DeleteNoteTask().execute();
+                }
+            });
+
+            view.findViewById(R.id.textCancel).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialogDeleteNote.dismiss();
+                }
+            });
+        }
+        dialogDeleteNote.show();
     }
 
     private void setSubtitleIndicatorColor() {
@@ -333,5 +413,79 @@ public class CrearNotas extends AppCompatActivity {
             cursor.close();
         }
         return filePath;
+    }
+
+    private void showAddDialog() {
+
+        final TextView dateText = findViewById(R.id.date);
+        final TextView timeText = findViewById(R.id.time);
+
+        //Set current date as default date
+        final long date = System.currentTimeMillis();
+        SimpleDateFormat dateSdf = new SimpleDateFormat("d MMMM");
+        String dateString = dateSdf.format(date);
+        dateText.setText(dateString);
+
+        //Set current time as default time
+        SimpleDateFormat timeSdf = new SimpleDateFormat("hh : mm a");
+        String timeString = timeSdf.format(date);
+        timeText.setText(timeString);
+
+        final Calendar cal = Calendar.getInstance();
+        cal.setTimeInMillis(System.currentTimeMillis());
+
+        //Set custom date
+        dateText.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
+            @Override
+            public void onClick(View v) {
+                final DatePickerDialog datePickerDialog = new DatePickerDialog(CrearNotas.this,
+                        new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker view, int year,
+                                                  int monthOfYear, int dayOfMonth) {
+                                //String newMonth = getMonth(monthOfYear + 1);
+                                //dateText.setText(dayOfMonth + " " + newMonth);
+                                cal.set(Calendar.YEAR, year);
+                                cal.set(Calendar.MONTH, monthOfYear);
+                                cal.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                            }
+                        }, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH));
+                datePickerDialog.show();
+                datePickerDialog.getDatePicker().setMinDate(date);
+            }
+        });
+
+
+        //Set custom time
+        timeText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TimePickerDialog timePickerDialog = new TimePickerDialog(CrearNotas.this,
+                        new TimePickerDialog.OnTimeSetListener() {
+                            @Override
+                            public void onTimeSet(TimePicker view, int hourOfDay,
+                                                  int minute) {
+                                String time;
+                                String minTime = String.format("%02d", minute); //prefix zero to minute if its single digit
+                                //Method to postfix AM/PM
+                                if (hourOfDay >= 0 && hourOfDay < 12) {
+                                    time = hourOfDay + " : " + minTime + " AM";
+                                } else {
+                                    if (hourOfDay != 12) {
+                                        hourOfDay = hourOfDay - 12;
+                                    }
+                                    time = hourOfDay + " : " + minTime + " PM";
+                                }
+
+                                timeText.setText(time);
+                                cal.set(Calendar.HOUR, hourOfDay);
+                                cal.set(Calendar.MINUTE, minute);
+                                cal.set(Calendar.SECOND, 0);
+                            }
+                        }, cal.get(Calendar.HOUR), cal.get(MINUTE), false);
+                timePickerDialog.show();
+            }
+        });
     }
 }

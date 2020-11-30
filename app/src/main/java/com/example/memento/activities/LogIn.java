@@ -2,7 +2,12 @@ package com.example.memento.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 
+import android.app.AlarmManager;
+import android.app.Notification;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -14,11 +19,15 @@ import com.example.memento.R;
 import com.example.memento.data.UserConfig;
 import com.example.memento.helpers.ItemTapListener;
 import com.example.memento.model.UserModel;
+import com.example.memento.notifications.MyNotificationPublisher;
 
 import java.security.InvalidParameterException;
 
 
 public class LogIn extends AppCompatActivity implements ItemTapListener {
+
+    public static final String NOTIFICATION_CHANNEL_ID = "10001";
+    private final static String default_notification_channel_id = "default";
 
     private static final String TAG = MainActivity.class.getName();
     public static final String USER_KEY = "USER";
@@ -85,4 +94,35 @@ public class LogIn extends AppCompatActivity implements ItemTapListener {
     public void onItemTap(View view, int position) {
 
     }
+
+    //Schedule alarm notification
+    private void scheduleNotification(Notification notification, long delay) {
+        Intent notificationIntent = new Intent(this, MyNotificationPublisher.class);
+        notificationIntent.putExtra(MyNotificationPublisher.NOTIFICATION_ID, 1);
+        notificationIntent.putExtra(MyNotificationPublisher.NOTIFICATION, notification);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        assert alarmManager != null;
+        alarmManager.set(AlarmManager.RTC_WAKEUP, delay, pendingIntent);
+    }
+
+    //Build notification
+    private Notification getNotification(String content) {
+        //on notification click open MainActivity
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, default_notification_channel_id);
+        builder.setContentTitle("Memento Reminder");
+        builder.setContentText(content);
+        builder.setContentIntent(pendingIntent);
+        builder.setAutoCancel(true);
+        builder.setSmallIcon(R.drawable.ic_stat_name);
+        builder.setDefaults(Notification.DEFAULT_LIGHTS | Notification.DEFAULT_SOUND);
+        builder.setChannelId(NOTIFICATION_CHANNEL_ID);
+        builder.setPriority(NotificationCompat.PRIORITY_HIGH);
+        return builder.build();
+    }
+
 }

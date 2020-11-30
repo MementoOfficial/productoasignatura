@@ -49,7 +49,6 @@ public class SignUp extends AppCompatActivity {
         });
     }
 
-
     private void signUp() {
         if(!validateFields()) {
             return;
@@ -65,7 +64,7 @@ public class SignUp extends AppCompatActivity {
     }
 
     private void navigateToMain(UserModel user) {
-        Intent intent = new Intent(this, LogIn.class);
+        Intent intent = new Intent(this, Notes.class);
         //la proxima activity ahora será la primera en el back stack
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra(LogIn.USER_KEY, user.getFullname());
