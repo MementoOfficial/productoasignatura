@@ -216,7 +216,6 @@ public class CrearNotas extends AppCompatActivity implements TimePickerDialog.On
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     private void startAlarm(Calendar c) {
-        // AlertReceiver alertReceiver = new AlertReceiver();
 
         final int id = (int) System.currentTimeMillis();
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
