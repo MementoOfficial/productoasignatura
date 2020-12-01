@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">Memento</string>
     <string name="search_notes">Buscar Notas</string>
+    <string name="title">Titulo</string>
+    <string name="subtitle">Subtitle</string>
+    <string name="writenote">Escriba la nota</string>
+    <string name="alarm">Agregar Alarma</string>
+    <string name="new_notification">Nueva notificación</string>
+    <string name="cancel">Cancelar Alarma</string>
+    <string name="alarma">Alarma</string>
 </resources>
