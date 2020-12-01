@@ -91,6 +91,7 @@ public class CrearNotas extends AppCompatActivity implements TimePickerDialog.On
             }
         });
 
+
         inputNoteTitle = findViewById(R.id.inputNoteTitle);
         inputNoteSubtitle = findViewById(R.id.inputNoteSubtitle);
         inputNoteText = findViewById(R.id.inputNote);
@@ -111,6 +112,13 @@ public class CrearNotas extends AppCompatActivity implements TimePickerDialog.On
             }
         });
 
+        selectedNoteColor = "#333333";
+        selectedImagePath = "";
+
+        if (getIntent().getBooleanExtra("isViewOrUpdate", false)) {
+            alreadyAvailableNote = (Note) getIntent().getSerializableExtra("note");
+            setViewOrUpdateNote();
+        }
         Button buttonTimePicker = findViewById(R.id.button_timepicker);
         buttonTimePicker.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -126,14 +134,6 @@ public class CrearNotas extends AppCompatActivity implements TimePickerDialog.On
                 cancelAlarm();
             }
         });
-
-        selectedNoteColor = "#333333";
-        selectedImagePath = "";
-
-        if (getIntent().getBooleanExtra("isViewOrUpdate", false)) {
-            alreadyAvailableNote = (Note) getIntent().getSerializableExtra("note");
-            setViewOrUpdateNote();
-        }
 
         initMiscellaneous();
         setSubtitleIndicatorColor();
@@ -238,6 +238,7 @@ public class CrearNotas extends AppCompatActivity implements TimePickerDialog.On
     private void initMiscellaneous() {
         final LinearLayout layoutMiscellaneous = findViewById(R.id.layoutMiscellaneous);
         final BottomSheetBehavior<LinearLayout> bottomSheetBehavior = BottomSheetBehavior.from(layoutMiscellaneous);
+
         layoutMiscellaneous.findViewById(R.id.textMiscellaneous).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
