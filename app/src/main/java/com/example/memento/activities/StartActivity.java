@@ -1,22 +1,10 @@
 package com.example.memento.activities;
 
 import android.app.Activity;
-import android.app.AlarmManager;
-import android.app.Notification;
-import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 
-import androidx.core.app.NotificationCompat;
-
-import com.example.memento.R;
-import com.example.memento.activities.LogIn;
-import com.example.memento.activities.MainActivity;
-import com.example.memento.activities.Notes;
 import com.example.memento.data.UserConfig;
-import com.example.memento.notifications.MyNotificationPublisher;
 
 public class StartActivity extends Activity {
 
