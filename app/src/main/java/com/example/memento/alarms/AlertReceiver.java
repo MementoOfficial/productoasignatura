@@ -8,6 +8,8 @@ import androidx.core.app.NotificationCompat;
 
 import com.example.memento.alarms.alarmhelper.NotificationHelper;
 
+import java.util.ArrayList;
+
 public class AlertReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -15,4 +17,6 @@ public class AlertReceiver extends BroadcastReceiver {
         NotificationCompat.Builder nb = notificationHelper.getChannelNotification();
         notificationHelper.getManager().notify(1, nb.build());
     }
+
+
 }

@@ -35,11 +35,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
-public class CrearNotas extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener{
+public class CrearNotas extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener {
+
     private TextView mTextView;
     private EditText inputNoteTitle, inputNoteSubtitle, inputNoteText;
     private TextView textDateTime;
-    private int i;
+
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -66,7 +67,7 @@ public class CrearNotas extends AppCompatActivity implements TimePickerDialog.On
 
         textDateTime.setText(
                 new SimpleDateFormat("EEEE, dd MMMM yyyy HH:mm a", Locale.getDefault())
-                .format(new Date())
+                        .format(new Date())
         );
 
         ImageView imageSave = findViewById(R.id.imageSave);
@@ -97,12 +98,12 @@ public class CrearNotas extends AppCompatActivity implements TimePickerDialog.On
 
     }
 
-    private void saveNote(){
-        if(inputNoteTitle.getText().toString().trim().isEmpty()){
+    private void saveNote() {
+        if (inputNoteTitle.getText().toString().trim().isEmpty()) {
             Toast.makeText(this, "El titulo no puede estar vacío", Toast.LENGTH_SHORT).show();
             return;
-        }else if(inputNoteSubtitle.getText().toString().trim().isEmpty()
-        && inputNoteText.getText().toString().trim().isEmpty()){
+        } else if (inputNoteSubtitle.getText().toString().trim().isEmpty()
+                && inputNoteText.getText().toString().trim().isEmpty()) {
             Toast.makeText(this, "Debe completar los campos", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -157,24 +158,29 @@ public class CrearNotas extends AppCompatActivity implements TimePickerDialog.On
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     private void startAlarm(Calendar c) {
-        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-
-        for (i = 0; i < 10 ; ++i) {
+     //   AlertReceiver alertReceiver = new AlertReceiver();
+       // int[] arr2 = alertReceiver.getNumArray();
+      //  ArrayList intentArray = new ArrayList<PendingIntent>();
+            final int id = (int) System.currentTimeMillis();
+            AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
             Intent intent = new Intent(this, AlertReceiver.class);
-            PendingIntent pendingIntent = PendingIntent.getBroadcast(this, i, intent, 0);
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(this, id, intent, 0);
 
             if (c.before(Calendar.getInstance())) {
-                c.add(Calendar.DATE, i);
+                c.add(Calendar.DATE, 1);
                 //alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP,
                 //       SystemClock.elapsedRealtime() + 60000 * i,
                 //       pendingIntent);
-
             }
 
             alarmManager.setExact(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), pendingIntent);
 
         }
-    }
+
+
+
+
+
 
     private void cancelAlarm() {
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);

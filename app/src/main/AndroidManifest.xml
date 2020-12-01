@@ -40,7 +40,7 @@
         <activity android:name=".activities.LogIn" />
         <activity android:name=".activities.MainActivity" />
 
-        <receiver android:name=".alarms.AlertReceiver"/>
+        <receiver android:name=".alarms.AlertReceiver" android:process=":remote"/>
     </application>
 
 </manifest>
