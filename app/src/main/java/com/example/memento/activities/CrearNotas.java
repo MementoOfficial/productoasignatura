@@ -86,8 +86,6 @@ public class CrearNotas extends AppCompatActivity {
         inputNoteTitle = findViewById(R.id.inputNoteTitle);
         inputNoteSubtitle = findViewById(R.id.inputNoteSubtitle);
         inputNoteText = findViewById(R.id.inputNote);
-        inputDate = findViewById(R.id.date);
-        inputTime = findViewById(R.id.time);
         textDateTime = findViewById(R.id.textDateTime);
         viewSubtitleIndicator = findViewById(R.id.viewSubtitleIndicator);
         imageNote = findViewById(R.id.imageNote);
@@ -113,7 +111,6 @@ public class CrearNotas extends AppCompatActivity {
             setViewOrUpdateNote();
         }
 
-        showAddDialog();
         initMiscellaneous();
         setSubtitleIndicatorColor();
     }
@@ -169,8 +166,6 @@ public class CrearNotas extends AppCompatActivity {
                 finish();
             }
         }
-
-        showAddDialog();
         new SaveNoteTask().execute();
     }
 
@@ -413,79 +408,5 @@ public class CrearNotas extends AppCompatActivity {
             cursor.close();
         }
         return filePath;
-    }
-
-    private void showAddDialog() {
-
-        final TextView dateText = findViewById(R.id.date);
-        final TextView timeText = findViewById(R.id.time);
-
-        //Set current date as default date
-        final long date = System.currentTimeMillis();
-        SimpleDateFormat dateSdf = new SimpleDateFormat("d MMMM");
-        String dateString = dateSdf.format(date);
-        dateText.setText(dateString);
-
-        //Set current time as default time
-        SimpleDateFormat timeSdf = new SimpleDateFormat("hh : mm a");
-        String timeString = timeSdf.format(date);
-        timeText.setText(timeString);
-
-        final Calendar cal = Calendar.getInstance();
-        cal.setTimeInMillis(System.currentTimeMillis());
-
-        //Set custom date
-        dateText.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.N)
-            @Override
-            public void onClick(View v) {
-                final DatePickerDialog datePickerDialog = new DatePickerDialog(CrearNotas.this,
-                        new DatePickerDialog.OnDateSetListener() {
-                            @Override
-                            public void onDateSet(DatePicker view, int year,
-                                                  int monthOfYear, int dayOfMonth) {
-                                //String newMonth = getMonth(monthOfYear + 1);
-                                //dateText.setText(dayOfMonth + " " + newMonth);
-                                cal.set(Calendar.YEAR, year);
-                                cal.set(Calendar.MONTH, monthOfYear);
-                                cal.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                            }
-                        }, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH));
-                datePickerDialog.show();
-                datePickerDialog.getDatePicker().setMinDate(date);
-            }
-        });
-
-
-        //Set custom time
-        timeText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                TimePickerDialog timePickerDialog = new TimePickerDialog(CrearNotas.this,
-                        new TimePickerDialog.OnTimeSetListener() {
-                            @Override
-                            public void onTimeSet(TimePicker view, int hourOfDay,
-                                                  int minute) {
-                                String time;
-                                String minTime = String.format("%02d", minute); //prefix zero to minute if its single digit
-                                //Method to postfix AM/PM
-                                if (hourOfDay >= 0 && hourOfDay < 12) {
-                                    time = hourOfDay + " : " + minTime + " AM";
-                                } else {
-                                    if (hourOfDay != 12) {
-                                        hourOfDay = hourOfDay - 12;
-                                    }
-                                    time = hourOfDay + " : " + minTime + " PM";
-                                }
-
-                                timeText.setText(time);
-                                cal.set(Calendar.HOUR, hourOfDay);
-                                cal.set(Calendar.MINUTE, minute);
-                                cal.set(Calendar.SECOND, 0);
-                            }
-                        }, cal.get(Calendar.HOUR), cal.get(MINUTE), false);
-                timePickerDialog.show();
-            }
-        });
     }
 }
