@@ -37,8 +37,8 @@
         <activity android:name=".activities.SignUp" />
         <activity android:name=".activities.LogIn" />
         <activity android:name=".activities.MainActivity" />
-        <receiver
-            android:name="com.example.memento.notifications.MyNotificationPublisher" />
+
+        <receiver android:name=".alarms.AlertReceiver" android:process=":remote"/>
 
     </application>
 
