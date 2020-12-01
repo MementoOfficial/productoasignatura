@@ -82,6 +82,7 @@ public class CrearNotas extends AppCompatActivity implements TimePickerDialog.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crear_notas);
 
+        mTextView = findViewById(R.id.tv_test);
         ImageView imageBack = findViewById(R.id.imageBack);
 
         imageBack.setOnClickListener(new View.OnClickListener() {
