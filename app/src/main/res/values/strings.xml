@@ -11,4 +11,12 @@
     <string name="seguro_que_deseas_eliminar_la_tarea">Seguro que deseas eliminar la tarea?</string>
     <string name="cancelar">Cancelar</string>
     <string name="alarm">alarma</string>
+    <string name="title">Titulo</string>
+    <string name="subtitle">Subtitle</string>
+    <string name="writenote">Escriba la nota</string>
+    <string name="alarm">Agregar Alarma</string>
+    <string name="new_notification">Nueva notificación</string>
+    <string name="cancel">Cancelar Alarma</string>
+    <string name="alarma">Alarma</string>
+
 </resources>

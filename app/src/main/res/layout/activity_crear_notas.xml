@@ -54,7 +54,7 @@
                 android:layout_marginTop="@dimen/_15sdp"
                 android:layout_marginEnd="@dimen/_12sdp"
                 android:background="@null"
-                android:hint="Titulo"
+                android:hint="@string/title"
                 android:imeOptions="actionDone"
                 android:importantForAutofill="no"
                 android:includeFontPadding="false"
@@ -75,6 +75,7 @@
                 app:layout_constraintStart_toStartOf="@id/inputNoteTitle"
                 app:layout_constraintTop_toBottomOf="@id/inputNoteTitle"/>
 
+
             <EditText
                 android:id="@+id/inputNoteSubtitle"
                 android:layout_width="0dp"
@@ -83,7 +84,7 @@
                 android:layout_marginTop="@dimen/_15sdp"
                 android:layout_marginEnd="@dimen/_12sdp"
                 android:background="@null"
-                android:hint="Subtitulo"
+                android:hint="@string/subtitle"
                 android:importantForAutofill="no"
                 android:includeFontPadding="false"
                 android:inputType="textMultiLine"
@@ -127,7 +128,7 @@
                 android:layout_marginBottom="@dimen/_15sdp"
                 android:background="@null"
                 android:gravity="top"
-                android:hint="Escriba la nota"
+                android:hint="@string/writenote"
                 android:importantForAutofill="no"
                 android:includeFontPadding="false"
                 android:inputType="textMultiLine"
@@ -151,6 +152,7 @@
                 android:id="@+id/Ll_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+
                 android:layout_alignParentBottom="true"
                 app:layout_constraintTop_toBottomOf="@id/inputNote">
 
@@ -174,11 +176,11 @@
                 </Button>
 
             </LinearLayout>
-
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </ScrollView>
 
     <include layout="@layout/layout_miscellaneous"/>
 

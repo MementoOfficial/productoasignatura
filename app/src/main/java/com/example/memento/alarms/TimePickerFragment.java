@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.DialogFragment;
 
-public class TimePickerFragment extends DialogFragment{
+public class TimePickerFragment extends DialogFragment {
     @RequiresApi(api = Build.VERSION_CODES.N)
     @NonNull
     @Override

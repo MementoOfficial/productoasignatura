@@ -10,7 +10,8 @@ import com.example.memento.alarms.alarmhelper.NotificationHelper;
 
 import java.util.ArrayList;
 
-public class AlertReceiver extends BroadcastReceiver{
+public class AlertReceiver extends BroadcastReceiver {
+
     @Override
     public void onReceive(Context context, Intent intent) {
         NotificationHelper notificationHelper = new NotificationHelper(context);
