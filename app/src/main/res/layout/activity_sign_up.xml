@@ -17,17 +17,17 @@
         android:id="@+id/main_logo"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/signUp_fondo"/>
+        app:layout_constraintTop_toTopOf="@+id/signUp_fondo" />
 
     <TextView
         android:id="@+id/eTitulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="5dp"
         android:text="Empecemos"
         android:textColor="@color/white"
         android:textSize="30sp"
@@ -36,74 +36,143 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/main_logo" />
 
-    <EditText
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/eFirstName"
-        android:layout_width="wrap_content"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="41dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="First Name"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:hint="Nombre"
+        android:textColorHint="@color/colorWhite"
+        app:helperText="First Name"
+        app:helperTextTextColor="@color/colorWhite"
+        app:layout_constraintBottom_toTopOf="@+id/eLastName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/eTitulo" />
+        app:layout_constraintTop_toBottomOf="@id/eTitulo"
+        app:startIconDrawable="@drawable/ic_name">
 
-    <EditText
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/eName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:lines="1" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/eLastName"
-        android:layout_width="wrap_content"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="13dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Last Name"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="13dp"
+        android:hint="Apellido"
+        android:textColorHint="@color/colorWhite"
+        app:helperTextTextColor="@color/colorWhite"
+        app:helperText="Last Name"
+        app:layout_constraintBottom_toTopOf="@+id/eFirstName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/eFirstName" />
+        app:layout_constraintTop_toBottomOf="@id/eFirstName"
+        app:startIconDrawable="@drawable/ic_name">
 
-    <EditText
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/eLname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:lines="1" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/eEmail"
-        android:layout_width="wrap_content"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Email"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:hint="Email"
+        android:textColorHint="@color/colorWhite"
+        app:helperTextTextColor="@color/colorWhite"
+        app:helperText="Correo Electrónico"
+        app:layout_constraintBottom_toTopOf="@+id/eUser"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/eLastName" />
+        app:layout_constraintTop_toBottomOf="@id/eLastName"
+        app:startIconDrawable="@drawable/ic_email">
 
-    <EditText
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/eEmail2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:lines="1" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/eUser"
-        android:layout_width="wrap_content"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="User"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:hint="User"
+        app:helperText="Usuario"
+        app:layout_constraintBottom_toTopOf="@+id/ePassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/eEmail" />
+        app:layout_constraintTop_toBottomOf="@id/eEmail"
+        app:startIconDrawable="@drawable/ic_name">
 
-    <EditText
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/euser2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:lines="1" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/ePassword"
-        android:layout_width="wrap_content"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Password"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:hint="Password"
+        app:helperText="Contraseña"
+        app:layout_constraintBottom_toTopOf="@+id/registrarse_signUp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/eUser" />
+        app:layout_constraintTop_toBottomOf="@id/eUser"
+        app:startIconDrawable="@drawable/ic_name">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/ePassword2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:lines="1" />
+    </com.google.android.material.textfield.TextInputLayout>
+
 
     <Button
         android:id="@+id/registrarse_signUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="5dp"
+        android:backgroundTint="@color/black"
         android:text="Registrarse"
         android:textColor="@color/white"
-        android:backgroundTint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ePassword" />
