@@ -11,7 +11,7 @@
         android:id="@+id/signUp_fondo"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/fondo"/>
+        android:src="@drawable/goku"/>
 
     <ImageView
         android:id="@+id/main_logo"
@@ -125,6 +125,8 @@
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:hint="User"
+        android:textColorHint="@color/colorWhite"
+        app:helperTextTextColor="@color/colorWhite"
         app:helperText="Usuario"
         app:layout_constraintBottom_toTopOf="@+id/ePassword"
         app:layout_constraintEnd_toEndOf="parent"
@@ -149,6 +151,8 @@
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:hint="Password"
+        android:textColorHint="@color/colorWhite"
+        app:helperTextTextColor="@color/colorWhite"
         app:helperText="Contraseña"
         app:layout_constraintBottom_toTopOf="@+id/registrarse_signUp"
         app:layout_constraintEnd_toEndOf="parent"
