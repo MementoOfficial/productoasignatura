@@ -41,7 +41,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.icu.text.DateFormat;
-import android.icu.util.Calendar;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -64,21 +63,12 @@ import com.example.memento.entidades.Note;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 
 import java.io.InputStream;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
 import static java.util.Calendar.MINUTE;
-
-public class CrearNotas extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener{
-
-=======
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Locale;
 
 public class CrearNotas extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener {
 
@@ -237,13 +227,6 @@ public class CrearNotas extends AppCompatActivity implements TimePickerDialog.On
         timeText += DateFormat.getTimeInstance(DateFormat.SHORT).format(c.getTime());
 
         mTextView.setText(timeText);
-=======
-        String timeText = "Alarma establecida a: ";
-        timeText += DateFormat.getTimeInstance(DateFormat.SHORT).format(c.getTime());
-
-        mTextView.setText(timeText);
-
-
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -510,40 +493,4 @@ public class CrearNotas extends AppCompatActivity implements TimePickerDialog.On
         }
         return filePath;
     }
-=======
-     //   AlertReceiver alertReceiver = new AlertReceiver();
-       // int[] arr2 = alertReceiver.getNumArray();
-      //  ArrayList intentArray = new ArrayList<PendingIntent>();
-            final int id = (int) System.currentTimeMillis();
-            AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-            Intent intent = new Intent(this, AlertReceiver.class);
-            PendingIntent pendingIntent = PendingIntent.getBroadcast(this, id, intent, 0);
-
-            if (c.before(Calendar.getInstance())) {
-                c.add(Calendar.DATE, 1);
-                //alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP,
-                //       SystemClock.elapsedRealtime() + 60000 * i,
-                //       pendingIntent);
-            }
-
-            alarmManager.setExact(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), pendingIntent);
-
-        }
-
-
-
-
-
-
-    private void cancelAlarm() {
-        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        Intent intent = new Intent(this, AlertReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent, 0);
-        alarmManager.cancel(pendingIntent);
-
-        mTextView.setText("Alarma cancelada");
-
-    }
-
-
 }

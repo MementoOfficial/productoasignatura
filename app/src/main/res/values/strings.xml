@@ -10,7 +10,7 @@
     <string name="borrar_nota">Borrar Nota</string>
     <string name="seguro_que_deseas_eliminar_la_tarea">Seguro que deseas eliminar la tarea?</string>
     <string name="cancelar">Cancelar</string>
-    <string name="alarm">alarma</string>
+    <string name="alarms">alarma</string>
     <string name="title">Titulo</string>
     <string name="subtitle">Subtitle</string>
     <string name="writenote">Escriba la nota</string>
