@@ -55,6 +55,7 @@ public class Notes extends AppCompatActivity implements NotesListener {
         textView = findViewById(R.id.tv_test2);
         progressBar.setMax(100);
 
+
         ImageView imageAddNoteMain = findViewById(R.id.imageAddNoteMain);
         imageAddNoteMain.setOnClickListener(new View.OnClickListener() {
             @Override
