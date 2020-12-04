@@ -50,6 +50,11 @@ public class Notes extends AppCompatActivity implements NotesListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notes);
 
+        progressBar = findViewById(R.id.Pg_test);
+        button = findViewById(R.id.button);
+        textView = findViewById(R.id.tv_test2);
+        progressBar.setMax(100);
+
         ImageView imageAddNoteMain = findViewById(R.id.imageAddNoteMain);
         imageAddNoteMain.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,6 +70,7 @@ public class Notes extends AppCompatActivity implements NotesListener {
         notesRecyclerView.setLayoutManager(
                 new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         );
+
 
         noteList = new ArrayList<>();
         notesAdapter = new NotesAdapter(noteList, this);
@@ -95,7 +101,6 @@ public class Notes extends AppCompatActivity implements NotesListener {
 
     @Override
     public void onNoteClicked(Note note, int position) {
-
         noteClickedPosition = position;
         Intent intent = new Intent(getApplicationContext(), CrearNotas.class);
         intent.putExtra("isViewOrUpdate", true);
@@ -132,7 +137,6 @@ public class Notes extends AppCompatActivity implements NotesListener {
                     }else{
                         noteList.add(noteClickedPosition, notes.get(noteClickedPosition));
                         notesAdapter.notifyItemChanged(noteClickedPosition);
-
                     }
                 }
             }
@@ -152,34 +156,24 @@ public class Notes extends AppCompatActivity implements NotesListener {
         }
     }
 
-       /* progressBar = findViewById(R.id.Pg_test);
-        button = findViewById(R.id.button);
-        textView = findViewById(R.id.tv_test2);
-        progressBar.setMax(100);
-
+    public void setProgressBar() {
         button.setOnClickListener(new View.OnClickListener() {
-          @Override
-        public void onClick(View v) {
-          setProgressBar();
-        }
+            @Override
+            public void onClick(View v) {
+                if (i <= 90) {
+                    i += 10;
+                }
+
+                progressBar.setProgress(i);
+                i++;
+                progressBar.setProgress(i);
+                textView.setText(i + "%");
+
+                if (i == 100) {
+                    i = 0;
+                    progressBar.setProgress(100);
+                }
+            }
         });
     }
-
-    public void setProgressBar() {
-        if (i <= 90) {
-            i += 10;
-        }
-
-        progressBar.setProgress(i);
-        i++;
-        progressBar.setProgress(i);
-        textView.setText(i + "%");
-
-        if (i == 100) {
-            i = 0;
-            progressBar.setProgress(100);
-
-        }
-    }*/
-
 }
