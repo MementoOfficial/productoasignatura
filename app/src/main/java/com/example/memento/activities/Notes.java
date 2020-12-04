@@ -148,16 +148,15 @@ public class Notes extends AppCompatActivity implements NotesListener {
         //progressBar.setMax(100);
 
         super.onActivityResult(requestCode, resultCode, data);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setProgressBar();
+            }
+        });
+
         if (requestCode == REQUEST_CODE_ADD_NOTE && resultCode == RESULT_OK) {
             getNotes(REQUEST_CODE_ADD_NOTE, false);
-
-            button.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    setProgressBar();
-                }
-            });
-
         }else if (requestCode == REQUEST_CODE_UPDATE_NOTE && resultCode == RESULT_OK) {
             if (data != null) {
                 getNotes(REQUEST_CODE_UPDATE_NOTE, data.getBooleanExtra("isNoteDeleted", false));
