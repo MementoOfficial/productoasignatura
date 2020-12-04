@@ -165,6 +165,7 @@
                     android:text="@string/alarm"
                     style="@style/TextAppearance.AppCompat.Widget.Button.Borderless.Colored">
                 </Button>
+
                 <Button
                     android:id="@+id/button_cancel"
                     android:layout_width="match_parent"
