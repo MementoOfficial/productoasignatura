@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".activities.SignUp">
 
+
     <ImageView
         android:id="@+id/signUp_fondo"
         android:layout_width="match_parent"
@@ -181,6 +182,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ePassword" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
