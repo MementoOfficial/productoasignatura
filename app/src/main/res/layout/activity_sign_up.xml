@@ -130,8 +130,6 @@
         android:textColorHint="@color/colorWhite"
         app:helperTextTextColor="@color/colorWhite"
         app:helperText="Usuario"
-        android:textColorHint="@color/colorWhite"
-        app:helperTextTextColor="@color/colorWhite"
         app:layout_constraintBottom_toTopOf="@+id/ePassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
