@@ -32,6 +32,7 @@ public class NotificationHelper extends ContextWrapper {
         }
         return mManager;
     }
+
     public NotificationCompat.Builder getChannelNotification() {
         return new NotificationCompat.Builder(getApplicationContext(), channelID)
                 .setContentTitle("Heyy!")

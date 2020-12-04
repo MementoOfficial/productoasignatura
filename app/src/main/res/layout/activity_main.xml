@@ -18,16 +18,20 @@
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginTop="10dp"
+        android:layout_width="111dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="4dp"
+        android:src="@drawable/m"
+
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/main_fondo"/>
+        app:layout_constraintTop_toTopOf="@+id/main_fondo" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="170dp"
+        android:layout_marginTop="250dp"
         android:text="Bienvenidos a Memento"
         android:textColor="@color/white"
         android:textSize="20sp"

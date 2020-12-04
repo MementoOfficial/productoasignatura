@@ -50,6 +50,11 @@ public class Notes extends AppCompatActivity implements NotesListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notes);
 
+        progressBar = findViewById(R.id.Pg_test);
+        button = findViewById(R.id.button);
+        textView = findViewById(R.id.tv_test2);
+        progressBar.setMax(100);
+
         ImageView imageAddNoteMain = findViewById(R.id.imageAddNoteMain);
         imageAddNoteMain.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,6 +70,7 @@ public class Notes extends AppCompatActivity implements NotesListener {
         notesRecyclerView.setLayoutManager(
                 new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         );
+
 
         noteList = new ArrayList<>();
         notesAdapter = new NotesAdapter(noteList, this);
@@ -95,7 +101,6 @@ public class Notes extends AppCompatActivity implements NotesListener {
 
     @Override
     public void onNoteClicked(Note note, int position) {
-
         noteClickedPosition = position;
         Intent intent = new Intent(getApplicationContext(), CrearNotas.class);
         intent.putExtra("isViewOrUpdate", true);
@@ -132,7 +137,6 @@ public class Notes extends AppCompatActivity implements NotesListener {
                     }else{
                         noteList.add(noteClickedPosition, notes.get(noteClickedPosition));
                         notesAdapter.notifyItemChanged(noteClickedPosition);
-
                     }
                 }
             }
@@ -142,19 +146,7 @@ public class Notes extends AppCompatActivity implements NotesListener {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        progressBar = findViewById(R.id.Pg_test);
-        button = findViewById(R.id.button);
-        textView = findViewById(R.id.tv_test2);
-        //progressBar.setMax(100);
-
         super.onActivityResult(requestCode, resultCode, data);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setProgressBar();
-            }
-        });
-
         if (requestCode == REQUEST_CODE_ADD_NOTE && resultCode == RESULT_OK) {
             getNotes(REQUEST_CODE_ADD_NOTE, false);
         }else if (requestCode == REQUEST_CODE_UPDATE_NOTE && resultCode == RESULT_OK) {
@@ -165,19 +157,23 @@ public class Notes extends AppCompatActivity implements NotesListener {
     }
 
     public void setProgressBar() {
-        if (i <= 90) {
-            i += 10;
-        }
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (i <= 90) {
+                    i += 10;
+                }
 
-        progressBar.setProgress(i);
-        i++;
-        progressBar.setProgress(i);
-        textView.setText(i + "%");
+                progressBar.setProgress(i);
+                i++;
+                progressBar.setProgress(i);
+                textView.setText(i + "%");
 
-        if (i == 100) {
-            i = 0;
-            progressBar.setProgress(100);
-
-        }
+                if (i == 100) {
+                    i = 0;
+                    progressBar.setProgress(100);
+                }
+            }
+        });
     }
 }
