@@ -142,19 +142,7 @@ public class Notes extends AppCompatActivity implements NotesListener {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        progressBar = findViewById(R.id.Pg_test);
-        button = findViewById(R.id.button);
-        textView = findViewById(R.id.tv_test2);
-        //progressBar.setMax(100);
-
         super.onActivityResult(requestCode, resultCode, data);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setProgressBar();
-            }
-        });
-
         if (requestCode == REQUEST_CODE_ADD_NOTE && resultCode == RESULT_OK) {
             getNotes(REQUEST_CODE_ADD_NOTE, false);
         }else if (requestCode == REQUEST_CODE_UPDATE_NOTE && resultCode == RESULT_OK) {
@@ -162,6 +150,19 @@ public class Notes extends AppCompatActivity implements NotesListener {
                 getNotes(REQUEST_CODE_UPDATE_NOTE, data.getBooleanExtra("isNoteDeleted", false));
             }
         }
+    }
+
+       /* progressBar = findViewById(R.id.Pg_test);
+        button = findViewById(R.id.button);
+        textView = findViewById(R.id.tv_test2);
+        progressBar.setMax(100);
+
+        button.setOnClickListener(new View.OnClickListener() {
+          @Override
+        public void onClick(View v) {
+          setProgressBar();
+        }
+        });
     }
 
     public void setProgressBar() {
@@ -179,5 +180,6 @@ public class Notes extends AppCompatActivity implements NotesListener {
             progressBar.setProgress(100);
 
         }
-    }
+    }*/
+
 }

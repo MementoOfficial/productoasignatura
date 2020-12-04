@@ -152,7 +152,6 @@
                 android:id="@+id/Ll_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:layout_alignParentBottom="true"
                 app:layout_constraintTop_toBottomOf="@id/inputNote">
 
@@ -163,6 +162,7 @@
                     android:layout_marginTop="@dimen/_30sdp"
                     android:layout_weight="1"
                     android:text="@string/alarm"
+                    android:backgroundTint="@color/colorDefaultNoteColor"
                     style="@style/TextAppearance.AppCompat.Widget.Button.Borderless.Colored">
                 </Button>
 
@@ -173,6 +173,7 @@
                     android:layout_marginTop="@dimen/_30sdp"
                     android:layout_weight="1"
                     android:text="@string/cancelar"
+                    android:backgroundTint="@color/colorDefaultNoteColor"
                     style="@style/TextAppearance.AppCompat.Widget.Button.Borderless.Colored">
                 </Button>
 

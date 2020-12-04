@@ -16,7 +16,7 @@
         android:layout_marginTop="@dimen/_20sdp"
         android:layout_marginEnd="@dimen/_12sdp"
         android:includeFontPadding="false"
-        android:text="Mis Notas"
+        android:text="Mis Tareas"
         android:textColor="@color/colorWhite"
         android:textSize="@dimen/_20ssp"
         app:layout_constraintTop_toTopOf="parent"/>
@@ -95,6 +95,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Este es tu progreso"
+        android:textColor="@color/colorWhite"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

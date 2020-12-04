@@ -16,7 +16,7 @@
         android:layout_height="@dimen/_40sdp"
         android:gravity="center"
         android:includeFontPadding="false"
-        android:text="Miscelánea"
+        android:text="Extras"
         android:textColor="@color/colorWhite"
         android:textSize="@dimen/_13ssp"/>
 
@@ -133,7 +133,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:includeFontPadding="false"
-            android:text="Selecciona Color"
+            android:text="Selecciona un Color"
             android:textColor="@color/colorWhite"
             android:textSize="@dimen/_13ssp"/>
     </LinearLayout>
@@ -194,37 +194,5 @@
 
 
     </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/tareaCompletada"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_35sdp"
-        android:layout_marginStart="@dimen/_10sdp"
-        android:layout_marginEnd="@dimen/_10sdp"
-        android:layout_marginBottom="@dimen/_10sdp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:visibility="visible"
-        tools:ignore="UseCompoundDrawables">
-
-        <ImageView
-            android:layout_width="@dimen/_22sdp"
-            android:layout_height="@dimen/_22sdp"
-            android:contentDescription="@string/app_name"
-            android:src="@drawable/ic_book"
-            app:tint="#2196F3" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_10sdp"
-            android:includeFontPadding="false"
-            android:text="Tarea Completada"
-            android:textColor="#2196F3"
-            android:textSize="@dimen/_12ssp"/>
-
-
-    </LinearLayout>
-
 
 </LinearLayout>
