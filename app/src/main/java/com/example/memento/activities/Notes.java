@@ -13,8 +13,11 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.example.memento.R;
 import com.example.memento.adapters.NotesAdapter;
@@ -36,6 +39,11 @@ public class Notes extends AppCompatActivity implements NotesListener {
     private NotesAdapter notesAdapter;
 
     private int noteClickedPosition = -1;
+
+    private ProgressBar progressBar;
+    private Button button;
+    private TextView textView;
+    private int i = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +95,7 @@ public class Notes extends AppCompatActivity implements NotesListener {
 
     @Override
     public void onNoteClicked(Note note, int position) {
+
         noteClickedPosition = position;
         Intent intent = new Intent(getApplicationContext(), CrearNotas.class);
         intent.putExtra("isViewOrUpdate", true);
@@ -133,13 +142,42 @@ public class Notes extends AppCompatActivity implements NotesListener {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        progressBar = findViewById(R.id.Pg_test);
+        button = findViewById(R.id.button);
+        textView = findViewById(R.id.tv_test2);
+        //progressBar.setMax(100);
+
         super.onActivityResult(requestCode, resultCode, data);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setProgressBar();
+            }
+        });
+
         if (requestCode == REQUEST_CODE_ADD_NOTE && resultCode == RESULT_OK) {
             getNotes(REQUEST_CODE_ADD_NOTE, false);
         }else if (requestCode == REQUEST_CODE_UPDATE_NOTE && resultCode == RESULT_OK) {
             if (data != null) {
                 getNotes(REQUEST_CODE_UPDATE_NOTE, data.getBooleanExtra("isNoteDeleted", false));
             }
+        }
+    }
+
+    public void setProgressBar() {
+        if (i <= 90) {
+            i += 10;
+        }
+
+        progressBar.setProgress(i);
+        i++;
+        progressBar.setProgress(i);
+        textView.setText(i + "%");
+
+        if (i == 100) {
+            i = 0;
+            progressBar.setProgress(100);
+
         }
     }
 }

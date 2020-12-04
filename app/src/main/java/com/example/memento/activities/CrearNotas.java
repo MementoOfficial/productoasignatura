@@ -16,6 +16,7 @@ import android.os.SystemClock;
 import android.Manifest;
 
 import android.os.SystemClock;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import android.annotation.SuppressLint;
@@ -88,11 +89,13 @@ public class CrearNotas extends AppCompatActivity implements TimePickerDialog.On
 
     private Note alreadyAvailableNote;
 
+
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crear_notas);
+
 
         mTextView = findViewById(R.id.tv_test);
         ImageView imageBack = findViewById(R.id.imageBack);
@@ -124,8 +127,6 @@ public class CrearNotas extends AppCompatActivity implements TimePickerDialog.On
             public void onClick(View v) {
                 saveNote();
             }
-
-
         });
 
         selectedNoteColor = "#333333";
@@ -144,6 +145,7 @@ public class CrearNotas extends AppCompatActivity implements TimePickerDialog.On
                 timePicker.show(getSupportFragmentManager(), "time picker");
             }
         });
+
         Button buttonCancelAlarm = findViewById(R.id.button_cancel);
         buttonCancelAlarm.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -151,6 +153,7 @@ public class CrearNotas extends AppCompatActivity implements TimePickerDialog.On
                 cancelAlarm();
             }
         });
+
         initMiscellaneous();
         setSubtitleIndicatorColor();
     }
@@ -160,10 +163,12 @@ public class CrearNotas extends AppCompatActivity implements TimePickerDialog.On
         inputNoteSubtitle.setText(alreadyAvailableNote.getSubtitle());
         inputNoteText.setText(alreadyAvailableNote.getNoteText());
         textDateTime.setText(alreadyAvailableNote.getDateTime());
+
         if (alreadyAvailableNote.getImagePath() != null && !alreadyAvailableNote.getImagePath().trim().isEmpty()) {
             imageNote.setImageBitmap(BitmapFactory.decodeFile(alreadyAvailableNote.getImagePath()));
             imageNote.setVisibility(View.VISIBLE);
             selectedImagePath = alreadyAvailableNote.getImagePath();
+
         }
 
     }
@@ -236,7 +241,6 @@ public class CrearNotas extends AppCompatActivity implements TimePickerDialog.On
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(this, AlertReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, id, intent, 0);
-
         if(c.before(Calendar.getInstance())) {
             c.add(Calendar.DATE, 1);
         }
@@ -244,12 +248,13 @@ public class CrearNotas extends AppCompatActivity implements TimePickerDialog.On
     }
 
     private void cancelAlarm() {
-        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        /*AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(this, AlertReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent, 0);
         alarmManager.cancel(pendingIntent);
 
-        mTextView.setText("Alarma Cancelada");
+        mTextView.setText("Alarma Cancelada");*/
+
     }
 
     private void initMiscellaneous() {

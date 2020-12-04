@@ -52,4 +52,14 @@
         android:textColor="@color/colorNoteSubtitleText"
         android:textSize="@dimen/_7ssp"/>
 
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tarea Completada"
+        android:backgroundTint="@color/colorDefaultNoteColor"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/_5ssp"
+        android:textStyle="bold"/>
+
 </LinearLayout>
